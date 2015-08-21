@@ -1,0 +1,7 @@
+com\resume\dao\Wordtable.class
+com\resume\model\UserResume.class
+com\resume\dao\MSWordResume.class
+com\test\User.class
+com\test\RegisterController.class
+com\test\TestWorld.class
+com\test\ResumeController.class

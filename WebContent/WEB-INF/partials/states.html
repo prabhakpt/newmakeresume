@@ -1,0 +1,9 @@
+<div>
+    <li ng-repeat="(key, value) in states">
+        <ul ng-if="country === value.n">
+            <li ng-repeat="(stateKey, stateValue) in value.s">
+                {{stateValue}}
+            </li>
+        </ul>
+    </li>
+</div>
