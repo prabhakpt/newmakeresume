@@ -2,11 +2,8 @@ package com.resume.dao;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.Iterator;
-import java.util.List;
 
 import org.apache.poi.xwpf.usermodel.ParagraphAlignment;
-import org.apache.poi.xwpf.usermodel.UnderlinePatterns;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
@@ -18,7 +15,7 @@ public class Wordtable {
 	/*public static void main(String aaa[]){*/
 		public boolean writeDataToMSWord(UserResume resumeData){
 		System.out.println("This is Word To Document Class");
-File file = null; 
+		File file = null; 
        FileOutputStream fos = null; 
        XWPFDocument document = null; 
        XWPFParagraph para = null; 
@@ -68,7 +65,7 @@ File file = null;
                     table.getRow(0).getCell(0).setText(resumeData.getPhoneNumber());
                     
                     table.getRow(0).getCell(2).setText(resumeData.getEmail()); 
-System.out.println("Email:"+resumeData.getEmail());
+                    System.out.println("Email:"+resumeData.getEmail());
                    table.getRow(2).getCell(2).setText(resumeData.getAddress());
                    //}
                     table.setWidth(120); // done change from 120 to 200
