@@ -1,4 +1,4 @@
-package com.resume.dao;
+package com.resume.playarea;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -45,7 +45,6 @@ public class MSWordResume {
 			run.addBreak();
 
 			XWPFRun summaryRun = para.createRun();
-			//summaryRun.addBreak();
 			summaryRun.setBold(true);
 			summaryRun.setText("Carrier Objective:");
 			summaryRun.setFontSize(15);
@@ -61,7 +60,6 @@ public class MSWordResume {
 			educationRun.setBold(true);
 			educationRun.setText("Education Details: ");
 			educationRun.setFontSize(15);
-			//educationRun.addBreak();
 			
 			// create table
 			XWPFTable table = document.createTable();
@@ -100,7 +98,6 @@ public class MSWordResume {
 			XWPFParagraph paragraph4 = document.createParagraph();
 			
 			XWPFRun run3 = paragraph4.createRun();
-			//run3.addBreak();
 			run3.setText("Technical Skills");
 			run3.setBold(true);
 			run3.setFontSize(20);
@@ -155,11 +152,9 @@ public class MSWordResume {
 			run6.addBreak();
 			
 			XWPFRun run7 = paragraph4.createRun();
-			//run7.addBreak();
 			run7.setBold(true);
 			run7.setText("Declaration:");
 			run7.setFontSize(15);
-			//run7.addBreak();
 			XWPFRun run8 = paragraph4.createRun();
 			run8.addBreak();
 			run8.setText("I here by declare that all the details furnished above are true to the best of my knowledge and belief.");

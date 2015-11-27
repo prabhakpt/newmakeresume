@@ -29,6 +29,10 @@ body {
 		<h3>
 			<a href="resume">Click here to start preparing resume </a>
 		</h3>
+		<br>
+		<h2>
+			<a href="register">New User</a>
+		</h2>
 	</div>
 </body>
 </html>

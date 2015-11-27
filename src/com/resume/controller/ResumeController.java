@@ -1,4 +1,4 @@
-package com.test;
+package com.resume.controller;
 
 import java.io.FileNotFoundException;
 
@@ -12,12 +12,12 @@ import com.resume.dao.impl.ResumeDaoImpl;
 import com.resume.model.UserResume;
 import com.resume.playarea.MSWordResume;
 
-//@Controller
+@Controller
 public class ResumeController {
-	/*@Autowired
-	ResumeDaoImpl resumeDao;*/
+	@Autowired
+	ResumeDaoImpl resumeDao;
 
-	//@RequestMapping("/userResume")
+	@RequestMapping("/userResume")
 	public ModelAndView helloWorld(@ModelAttribute("ResumeData") UserResume userResume) throws FileNotFoundException {
  
 		System.out.println("Incoming Data:"+userResume.toString());
@@ -27,7 +27,7 @@ public class ResumeController {
 		result.addObject("hello","success");
 		return result;
 	}
-	//@RequestMapping("/testDao")
+	@RequestMapping("/testDao")
 	public void testDb(){
 		//resumeDao.inser();
 	}

@@ -15,8 +15,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.resume.model.UserResume;
 
-@Controller
-public class TestWorld {
+//@Controller
+public class TestWorld {/*
 	@RequestMapping("/resume")
 	public ModelAndView helloWorld() {
  
@@ -58,4 +58,4 @@ public class TestWorld {
         //result.addObject("userForm",user);
         return result;
     }
-}
+*/}

@@ -1,4 +1,4 @@
-package com.resume.dao;
+package com.resume.playarea;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -16,11 +16,9 @@ public class Wordtable {
 		public boolean writeDataToMSWord(UserResume resumeData){
 		System.out.println("This is Word To Document Class");
 		File file = null; 
-       FileOutputStream fos = null; 
        XWPFDocument document = null; 
        XWPFParagraph para = null; 
        XWPFRun run = null; 
-       //Iterator<String> itr = resumeData.iterator();
        
        try { 
            // Create the first paragraph and set it's text. 
@@ -36,8 +34,6 @@ public class Wordtable {
            run.addBreak();    // similar to new line
            run.addBreak();
            
-           
-           
            XWPFTable table = document.createTable(4, 3);
            table.setRowBandSize(1);
            table.setWidth(1);
@@ -46,7 +42,6 @@ public class Wordtable {
            
            table.setStyleID("finest");
 
-
            table.getRow(1).getCell(1).setText(resumeData.getName());
            table.getRow(2).getCell(1).setText("fine");
            XWPFParagraph p1 = table.getRow(0).getCell(0).getParagraphs().get(0);
@@ -54,26 +49,19 @@ public class Wordtable {
                    XWPFRun r1 = p1.createRun();
                    r1.setBold(true);
                    r1.setText(resumeData.getInitial());
-                  // r1.setBold(true);
                    r1.setItalic(true);
                    r1.setFontFamily("Courier");
-                   //r1.setUnderline(UnderlinePatterns.DOT_DOT_DASH);
                    r1.setTextPosition(100);
-                   //int i=-1,j=-1;
-       /*            while(itr.hasNext()){*/
-          //Locating the cell values
                     table.getRow(0).getCell(0).setText(resumeData.getPhoneNumber());
                     
                     table.getRow(0).getCell(2).setText(resumeData.getEmail()); 
                     System.out.println("Email:"+resumeData.getEmail());
                    table.getRow(2).getCell(2).setText(resumeData.getAddress());
-                   //}
                     table.setWidth(120); // done change from 120 to 200
 
            file = new File("e:/resume.doc"); 
            if(file.exists())
                file.delete();
-
 
            FileOutputStream out = new FileOutputStream(file);
            document.write(out);
