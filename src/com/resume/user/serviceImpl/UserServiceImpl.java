@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.resume.dao.UserDao;
+import com.resume.model.UserLoginPojo;
 import com.resume.model.UserModel;
 import com.resume.user.service.UserService;
 
@@ -14,9 +15,13 @@ public class UserServiceImpl implements UserService{
 	UserDao userDao;
 
 	@Override
-	public void userLogin() {
-		
-		
+	public UserModel userLogin(UserLoginPojo user) {
+		UserModel pojo = userDao.loginUser(user.getUserName(), user.getPassword());
+		if(pojo != null){
+			System.out.println(" user is not null:"+pojo);
+			return pojo;
+		}
+		return pojo;
 	}
 
 	@Override

@@ -26,7 +26,9 @@
  --%>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>   
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>  
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
     "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -36,22 +38,37 @@
 </head>
 <body>
     <div align="center">
+    <spring:hasBindErrors name="result">
+    	<c:forEach items="${errors.globalErrors}" var="errorMessage">
+            <div id="errors" class="errors">
+                    <c:out value="${errorMessage.defaultMessage}" />
+            </div>
+        </c:forEach>
+    </spring:hasBindErrors>
         <form:form action="userRegister" method="POST" commandName="user">
             <table border="0">
                 <tr>
                     <td colspan="2" align="center"><h2>User New Registration</h2></td>
                 </tr>
                 <tr>
-                    <td>User Name:</td>
+                    <td>User Name</td>
                     <td><form:input path="userName" /></td>
+                    <td><form:errors path="userName" cssClass="error"/></td>
                 </tr>
                 <tr>
                     <td>Password</td>
                     <td><form:password path="password" /></td>
+                    <td><form:errors path="password" cssClass="error"/></td>
                 </tr>
                 <tr>
-                    <td>E-mail:</td>
-                    <td><form:input path="email" /></td>
+                    <td>Confirm Password</td>
+                    <td><form:password path="confirmPassword" /></td>
+                    <td><form:errors path="confirmPassword" cssClass="error"/></td>
+                </tr>
+                <tr>
+                    <td>E-mail</td>
+                    <td><form:input path="email" cssClass="error"/></td>
+                    <td><form:errors path="email" /></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center"><input type="submit" value="Register" /></td>

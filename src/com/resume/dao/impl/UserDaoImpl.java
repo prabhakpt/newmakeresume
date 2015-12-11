@@ -3,6 +3,7 @@ package com.resume.dao.impl;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -21,9 +22,12 @@ public class UserDaoImpl implements UserDao{
 	
 	@Override
 	public void registerUser(UserModel user) {
-		String query = "insert into user(user_id,user_name,user_password,user_email) values (?,?,?,?)";
-		Object[] args = new Object[]{user.getUserName()+1,user.getUserName(),user.getPassword(),user.getEmail()};
-		int out = jdbcTemplateObj.update(query,args);
+		
+		String query = "insert into user(userName,password,email) values (?,?,?)";
+		
+		Object[] userInfo = new Object[]{user.getUserName(),user.getPassword(),user.getEmail()};
+		
+		int out = jdbcTemplateObj.update(query,userInfo);
 		if(out!=0){
 			System.out.println("saved data with id:"+user.getUserName());
 		}else{
@@ -44,8 +48,20 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public void loginUser() {
-		// TODO Auto-generated method stub
+	public UserModel loginUser(String userName,String password) {
+		System.out.println("incoming username and password:"+userName + ":---:"+password);
+		
+		String query = "select * from user where userName = ? and password = ?";
+		
+		UserModel user = (UserModel) jdbcTemplateObj.queryForObject(query, new Object[]{userName,password},new BeanPropertyRowMapper<>(UserModel.class));
+		
+		System.out.println("User object is:" + user);
+		if(user!=null){
+			System.out.println("user is not Null after login"+user.getUserName());
+			return user;
+		}
+		return null;
+		
 		
 	}
 

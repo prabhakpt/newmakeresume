@@ -33,6 +33,9 @@ body {
 		<h2>
 			<a href="register">New User</a>
 		</h2>
+		<h2>Existing User
+			<a href="login">Login</a>
+		</h2>
 	</div>
 </body>
 </html>

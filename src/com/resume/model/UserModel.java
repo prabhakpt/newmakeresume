@@ -1,16 +1,28 @@
 package com.resume.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class UserModel {
-	private String userId;
+	private int id;
+	
+	@NotEmpty(message="User Name is required")
 	private String userName;
+	
+	@NotEmpty(message="Password is required!")
 	private String password;
+	
+	@NotEmpty(message="Confirm Password is required!")
+	private String confirmPassword;
+	
+	@NotEmpty(message="Email is required!")
 	private String email;
 	
-	public String getUserId() {
-		return userId;
+	
+	public int getId() {
+		return id;
 	}
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getUserName() {
 		return userName;
@@ -29,5 +41,11 @@ public class UserModel {
 	}
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	public String getConfirmPassword() {
+		return confirmPassword;
+	}
+	public void setConfirmPassword(String confirmPassword) {
+		this.confirmPassword = confirmPassword;
 	}
 }
