@@ -65,15 +65,30 @@ public class UserController {
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public ModelAndView doLogin(@Valid @ModelAttribute("userLogin") UserLoginPojo userLogin,BindingResult result){
 		ModelAndView model = new ModelAndView();
+		System.out.println("Started verifying the login details");
 		if(result.hasErrors()){
 			model.addObject("result", result);
 			model.setViewName("login");
 		}else{
-			UserModel user = userService.userLogin(userLogin);
-			System.out.println("user data at controller"+user.getUserName());
-			model.addObject("userInfo", user !=null ? user : "");
-			model.setViewName("home");
+			UserLoginPojo user = userService.userLogin(userLogin);
+			//System.out.println("user data at controller"+user.getUserName());
+			if(null == user || user.equals("")){
+				result.rejectValue("error", "Please enter correct username or password");
+			}else{
+				model.addObject("userInfo", user);
+			}
+			//model.addObject("userInfo", user);
+			if(result.hasGlobalErrors()){
+				System.out.println("Has global errors:;;;;;;;;;;;;;;;;;");
+				model.addObject("result", result);
+				model.setViewName("login");
+			}
+			//
 		}
+		model.setViewName("home");
+		//adding errors at to the model
+		System.out.println("added errors to the model"+result.toString());
+		//model.addObject("result", result);
 		return model;
 	}
 }

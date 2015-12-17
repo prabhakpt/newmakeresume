@@ -5,6 +5,6 @@ import com.resume.model.UserModel;
 
 
 public interface UserService {
-	public UserModel userLogin(UserLoginPojo user);
+	public UserLoginPojo userLogin(UserLoginPojo user);
 	public void userRegister(UserModel user);
 }

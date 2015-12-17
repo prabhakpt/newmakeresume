@@ -15,8 +15,8 @@ public class UserServiceImpl implements UserService{
 	UserDao userDao;
 
 	@Override
-	public UserModel userLogin(UserLoginPojo user) {
-		UserModel pojo = userDao.loginUser(user.getUserName(), user.getPassword());
+	public UserLoginPojo userLogin(UserLoginPojo user) {
+		UserLoginPojo pojo = userDao.loginUser(user.getUserName(), user.getPassword());
 		if(pojo != null){
 			System.out.println(" user is not null:"+pojo);
 			return pojo;

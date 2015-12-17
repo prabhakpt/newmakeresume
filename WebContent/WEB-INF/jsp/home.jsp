@@ -9,9 +9,9 @@
 </head>
 <body>
 <%  %>
-<form:form commandName="userInfo">
-	Welcome Mr/Ms:<form:label path="userName"></form:label>
 
-</form:form>
+	Welcome Mr/Ms: ${userLogin.userName}
+
+
 </body>
 </html>
